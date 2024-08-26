@@ -1,0 +1,196 @@
+[gd_scene load_steps=18 format=3 uid="uid://dskyondnaylrl"]
+
+[ext_resource type="Texture2D" uid="uid://7b2xrpre7ifa" path="res://Clock/clock_back.png" id="1_yfyok"]
+[ext_resource type="Texture2D" uid="uid://v6qj1nhtg21t" path="res://Clock/clock_center.png" id="2_g2wye"]
+[ext_resource type="Texture2D" uid="uid://047qgrtjtprj" path="res://Clock/hour_hand.png" id="3_lei5j"]
+[ext_resource type="Script" path="res://hour_hand.gd" id="4_fnowv"]
+[ext_resource type="Texture2D" uid="uid://bgikfycuv6l6i" path="res://Clock/minute_hand.png" id="4_rh74f"]
+[ext_resource type="Texture2D" uid="uid://bfvw5d5wpbjo0" path="res://Clock/second_hand.png" id="5_fd1i1"]
+[ext_resource type="Texture2D" uid="uid://bsl1yf3h1u4h2" path="res://Clock/attack_icon.png" id="6_7k3c7"]
+[ext_resource type="Texture2D" uid="uid://b4nmktk2fmgdd" path="res://Clock/magic_icon.png" id="7_mnxlp"]
+[ext_resource type="Texture2D" uid="uid://ler16mt8pxen" path="res://Clock/defend_icon.png" id="8_d3sp5"]
+[ext_resource type="Texture2D" uid="uid://bo7hlbcy3ajep" path="res://Clock/item_icon.png" id="9_y8pya"]
+[ext_resource type="Texture2D" uid="uid://dsq4b0ti8yvru" path="res://Clock/flee_icon.png" id="10_nt0xn"]
+[ext_resource type="Texture2D" uid="uid://4vhjmxdu67qr" path="res://Clock/temporal_icon.png" id="11_sx653"]
+[ext_resource type="Texture2D" uid="uid://in0fvokdvx1d" path="res://Clock/party_icon.png" id="12_egijo"]
+[ext_resource type="Texture2D" uid="uid://blyhlo024r3p2" path="res://Clock/tactics_icon.png" id="13_1xosq"]
+
+[sub_resource type="Animation" id="Animation_snghl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Clock/HourHand:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_mniu2"]
+resource_name = "hour_hand_spin"
+length = 8.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Clock/HourHand:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 4, 5, 6, 7, 8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.785398, 1.5708, 2.35619, 3.14159, 3.92699, 4.71239, 5.49779, 6.28319]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nfqvt"]
+_data = {
+"RESET": SubResource("Animation_snghl"),
+"hour_hand_spin_8": SubResource("Animation_mniu2")
+}
+
+[node name="Battle Clock" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Clock" type="Node2D" parent="."]
+position = Vector2(145, 325)
+
+[node name="ClockBack" type="Sprite2D" parent="Clock"]
+texture = ExtResource("1_yfyok")
+
+[node name="ClockCenter" type="Sprite2D" parent="Clock"]
+z_index = 10
+texture = ExtResource("2_g2wye")
+
+[node name="HourHand" type="Sprite2D" parent="Clock"]
+z_index = 9
+texture = ExtResource("3_lei5j")
+script = ExtResource("4_fnowv")
+
+[node name="MinuteHand" type="Sprite2D" parent="Clock"]
+z_index = 8
+texture = ExtResource("4_rh74f")
+
+[node name="SecondHand" type="Sprite2D" parent="Clock"]
+z_index = 7
+texture = ExtResource("5_fd1i1")
+
+[node name="Icons" type="Node2D" parent="Clock"]
+
+[node name="Fight" type="Sprite2D" parent="Clock/Icons"]
+texture = ExtResource("6_7k3c7")
+offset = Vector2(0, -104)
+region_enabled = true
+region_rect = Rect2(110.646, 6.4531, 35.3543, 35.9)
+
+[node name="Magic" type="Sprite2D" parent="Clock/Icons"]
+texture = ExtResource("7_mnxlp")
+offset = Vector2(70, -72)
+region_enabled = true
+region_rect = Rect2(180, 39, 35, 35)
+
+[node name="Defend" type="Sprite2D" parent="Clock/Icons"]
+texture = ExtResource("8_d3sp5")
+offset = Vector2(104, 0)
+region_enabled = true
+region_rect = Rect2(214, 111, 35, 35)
+
+[node name="Item" type="Sprite2D" parent="Clock/Icons"]
+texture = ExtResource("9_y8pya")
+offset = Vector2(70, 72)
+region_enabled = true
+region_rect = Rect2(180, 181, 35, 35)
+
+[node name="Flee" type="Sprite2D" parent="Clock/Icons"]
+texture = ExtResource("10_nt0xn")
+offset = Vector2(0, 104)
+region_enabled = true
+region_rect = Rect2(111, 214, 35, 35)
+
+[node name="Temporal" type="Sprite2D" parent="Clock/Icons"]
+texture = ExtResource("11_sx653")
+offset = Vector2(-70, 72)
+region_enabled = true
+region_rect = Rect2(41, 181, 35, 35)
+
+[node name="Party" type="Sprite2D" parent="Clock/Icons"]
+texture = ExtResource("12_egijo")
+offset = Vector2(-104, 0)
+region_enabled = true
+region_rect = Rect2(7, 111, 35, 35)
+
+[node name="Tactics" type="Sprite2D" parent="Clock/Icons"]
+texture = ExtResource("13_1xosq")
+offset = Vector2(-70, -72)
+region_enabled = true
+region_rect = Rect2(40, 39, 35, 35)
+
+[node name="IconPositions" type="Node2D" parent="Clock"]
+
+[node name="Position1" type="Marker2D" parent="Clock/IconPositions"]
+position = Vector2(0, -104)
+
+[node name="Position2" type="Marker2D" parent="Clock/IconPositions"]
+position = Vector2(70, -72)
+rotation = 0.785398
+
+[node name="Position7_2" type="Marker2D" parent="Clock/IconPositions"]
+position = Vector2(80, -65)
+rotation = 0.907571
+
+[node name="Position3" type="Marker2D" parent="Clock/IconPositions"]
+position = Vector2(104, 0)
+rotation = 1.5708
+
+[node name="Position7_3" type="Marker2D" parent="Clock/IconPositions"]
+position = Vector2(104, 18)
+rotation = 1.74533
+
+[node name="Position4" type="Marker2D" parent="Clock/IconPositions"]
+position = Vector2(70, 72)
+rotation = 2.35619
+
+[node name="Position7_4" type="Marker2D" parent="Clock/IconPositions"]
+position = Vector2(50, 90)
+rotation = 2.61799
+
+[node name="Position5" type="Marker2D" parent="Clock/IconPositions"]
+position = Vector2(0, 104)
+rotation = 3.14159
+
+[node name="Position6" type="Marker2D" parent="Clock/IconPositions"]
+position = Vector2(-70, 72)
+rotation = 3.92699
+
+[node name="Position7_5" type="Marker2D" parent="Clock/IconPositions"]
+position = Vector2(-50, 90)
+rotation = -2.61799
+
+[node name="Position7" type="Marker2D" parent="Clock/IconPositions"]
+position = Vector2(-104, 0)
+rotation = 4.71239
+
+[node name="Position7_6" type="Marker2D" parent="Clock/IconPositions"]
+position = Vector2(-104, 18)
+rotation = -1.74533
+
+[node name="Position8" type="Marker2D" parent="Clock/IconPositions"]
+position = Vector2(-70, -72)
+rotation = 5.49779
+
+[node name="Position7_7" type="Marker2D" parent="Clock/IconPositions"]
+position = Vector2(-80, -65)
+rotation = -0.907571
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_nfqvt")
+}
