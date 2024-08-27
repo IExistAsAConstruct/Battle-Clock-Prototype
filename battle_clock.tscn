@@ -1,9 +1,10 @@
-[gd_scene load_steps=18 format=3 uid="uid://dskyondnaylrl"]
+[gd_scene load_steps=22 format=3 uid="uid://dskyondnaylrl"]
 
+[ext_resource type="Script" path="res://Scripts/battle_clock.gd" id="1_5s26l"]
 [ext_resource type="Texture2D" uid="uid://7b2xrpre7ifa" path="res://Clock/clock_back.png" id="1_yfyok"]
 [ext_resource type="Texture2D" uid="uid://v6qj1nhtg21t" path="res://Clock/clock_center.png" id="2_g2wye"]
 [ext_resource type="Texture2D" uid="uid://047qgrtjtprj" path="res://Clock/hour_hand.png" id="3_lei5j"]
-[ext_resource type="Script" path="res://hour_hand.gd" id="4_fnowv"]
+[ext_resource type="Script" path="res://Scripts/hour_hand.gd" id="4_fnowv"]
 [ext_resource type="Texture2D" uid="uid://bgikfycuv6l6i" path="res://Clock/minute_hand.png" id="4_rh74f"]
 [ext_resource type="Texture2D" uid="uid://bfvw5d5wpbjo0" path="res://Clock/second_hand.png" id="5_fd1i1"]
 [ext_resource type="Texture2D" uid="uid://bsl1yf3h1u4h2" path="res://Clock/attack_icon.png" id="6_7k3c7"]
@@ -14,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://4vhjmxdu67qr" path="res://Clock/temporal_icon.png" id="11_sx653"]
 [ext_resource type="Texture2D" uid="uid://in0fvokdvx1d" path="res://Clock/party_icon.png" id="12_egijo"]
 [ext_resource type="Texture2D" uid="uid://blyhlo024r3p2" path="res://Clock/tactics_icon.png" id="13_1xosq"]
+[ext_resource type="Script" path="res://Scripts/text.gd" id="15_g06ig"]
 
 [sub_resource type="Animation" id="Animation_snghl"]
 length = 0.001
@@ -52,6 +54,12 @@ _data = {
 "hour_hand_spin_8": SubResource("Animation_mniu2")
 }
 
+[sub_resource type="SystemFont" id="SystemFont_wctln"]
+font_names = PackedStringArray("MV Boli")
+
+[sub_resource type="SystemFont" id="SystemFont_o6hqr"]
+font_names = PackedStringArray("MV Boli")
+
 [node name="Battle Clock" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -59,6 +67,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_5s26l")
 
 [node name="Clock" type="Node2D" parent="."]
 position = Vector2(145, 325)
@@ -115,7 +124,7 @@ offset = Vector2(0, 104)
 region_enabled = true
 region_rect = Rect2(111, 214, 35, 35)
 
-[node name="Temporal" type="Sprite2D" parent="Clock/Icons"]
+[node name="Temporal Ability" type="Sprite2D" parent="Clock/Icons"]
 texture = ExtResource("11_sx653")
 offset = Vector2(-70, 72)
 region_enabled = true
@@ -194,3 +203,32 @@ rotation = -0.907571
 libraries = {
 "": SubResource("AnimationLibrary_nfqvt")
 }
+
+[node name="Text" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("15_g06ig")
+
+[node name="Label" type="Label" parent="Text"]
+layout_mode = 0
+offset_left = 97.0
+offset_top = 168.0
+offset_right = 189.0
+offset_bottom = 195.0
+theme_override_fonts/font = SubResource("SystemFont_wctln")
+text = "Text 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="Text"]
+visible = false
+layout_mode = 0
+offset_left = 152.0
+offset_top = 168.0
+offset_right = 244.0
+offset_bottom = 195.0
+theme_override_fonts/font = SubResource("SystemFont_o6hqr")
+text = "Text 2"
+horizontal_alignment = 1
+vertical_alignment = 1
