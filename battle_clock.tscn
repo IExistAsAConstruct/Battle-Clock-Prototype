@@ -206,29 +206,40 @@ libraries = {
 
 [node name="Text" type="Control" parent="."]
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 8.0
+offset_top = 152.0
+offset_right = 288.0
+offset_bottom = 200.0
 script = ExtResource("15_g06ig")
 
 [node name="Label" type="Label" parent="Text"]
 layout_mode = 0
-offset_left = 97.0
-offset_top = 168.0
-offset_right = 189.0
-offset_bottom = 195.0
+offset_left = 72.0
+offset_top = 16.0
+offset_right = 197.0
+offset_bottom = 43.0
 theme_override_fonts/font = SubResource("SystemFont_wctln")
 text = "Text 1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Label2" type="Label" parent="Text"]
-visible = false
+modulate = Color(1, 1, 1, 0)
 layout_mode = 0
-offset_left = 152.0
-offset_top = 168.0
-offset_right = 244.0
-offset_bottom = 195.0
+offset_left = 184.0
+offset_top = 16.0
+offset_right = 309.0
+offset_bottom = 43.0
 theme_override_fonts/font = SubResource("SystemFont_o6hqr")
 text = "Text 2"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="TexPosLeft" type="Marker2D" parent="Text"]
+position = Vector2(-48, 16)
+
+[node name="TexPosCenter" type="Marker2D" parent="Text"]
+position = Vector2(72, 16)
+
+[node name="TexPosRight" type="Marker2D" parent="Text"]
+position = Vector2(184, 16)
