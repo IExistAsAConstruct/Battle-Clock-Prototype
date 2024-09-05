@@ -5,11 +5,9 @@ var handPos:int = 1
 var doRotate:bool = false
 var doRotateCcw:bool = false
 var errorRange:float = 0.001
-var secondHandToggled:bool = false
 var vfxHappen:bool = false
 var canRotate:bool = false
 var effect:Node
-signal send_to_hand()
 signal end_turn()
 # Called when the node enters the scene tree for the first time.
 
@@ -66,7 +64,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			
 		if event.is_action_pressed("ui_accept"):
 			canRotate = false
-			modulate = Color.BLUE_VIOLET
+			modulate = Color.VIOLET
 			effect = duplicate(0)
 			effect.top_level = true
 			effect.position = get_parent().get_parent().get_node("CenterClockPos").position
@@ -74,14 +72,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			add_child(effect)
 			effect.visible = true
 			vfxHappen = true
-			if secondHandToggled:
-				emit_signal("send_to_hand")
-			else:
-				emit_signal("end_turn")
+			emit_signal("end_turn")
 
-func _on_conditions_second_hand_toggled(toggled_on: bool) -> void:
-	secondHandToggled = toggled_on
-
-
-func _on_hour_hand_send_to_hand() -> void:
+func _on_minute_hand_send_to_hand() -> void:
 	canRotate = true

@@ -14,92 +14,104 @@ var secondOn:bool = false
 func _ready() -> void:
 	text1.text = root.get_active_icons()[0].name
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
-	if swapAllowed:
-	#region Swap Text
-		if doSwap:
-			if not isText2:
-				text2.text = root.get_active_icons()[activeIcon].name
-				text1.position = lerp(text1.position, get_node("TexPosLeft").position, 0.4)
-				text1.set_self_modulate(lerp(text1.get_self_modulate(), Color(1, 1, 1, 0), 0.4))
-				text2.position = lerp(text2.position, get_node("TexPosCenter").position, 0.4)
-				text2.set_self_modulate(lerp(text2.get_self_modulate(), Color(1, 1, 1, 1), 0.4))
-				if abs((text1.position.x - get_node("TexPosLeft").position.x)) and abs((text2.position.x - get_node("TexPosCenter").position.x)) <= errorRange:
-					doSwap = false
-					isText2 = true
-			else:
-				text1.text = root.get_active_icons()[activeIcon].name
-				text1.position = lerp(text1.position, get_node("TexPosCenter").position, 0.4)
-				text1.set_self_modulate(lerp(text1.get_self_modulate(), Color(1, 1, 1, 1), 0.4))
-				text2.position = lerp(text2.position, get_node("TexPosLeft").position, 0.4)
-				text2.set_self_modulate(lerp(text2.get_self_modulate(), Color(1, 1, 1, 0), 0.4))
-				if abs((text1.position.x - get_node("TexPosCenter").position.x)) and abs((text2.position.x - get_node("TexPosLeft").position.x)) <= errorRange:
-					doSwap = false
-					isText2 = false
-	#endregion
-
-	#region Swap Opposite Text
-		if doSwapOpp:
-			if not isText2:
-				text2.text = root.get_active_icons()[activeIcon].name
-				text1.position = lerp(text1.position, get_node("TexPosRight").position, 0.4)
-				text1.set_self_modulate(lerp(text1.get_self_modulate(), Color(1, 1, 1, 0), 0.4))
-				text2.position = lerp(text2.position, get_node("TexPosCenter").position, 0.4)
-				text2.set_self_modulate(lerp(text2.get_self_modulate(), Color(1, 1, 1, 1), 0.4))
-				if abs((text1.position.x - get_node("TexPosRight").position.x)) and abs((text2.position.x - get_node("TexPosCenter").position.x)) <= errorRange:
-					doSwapOpp = false
-					isText2 = true
-					
-			else:
-				text1.text = root.get_active_icons()[activeIcon].name
-				text1.position = lerp(text1.position, get_node("TexPosCenter").position, 0.4)
-				text1.set_self_modulate(lerp(text1.get_self_modulate(), Color(1, 1, 1, 1), 0.4))
-				text2.position = lerp(text2.position, get_node("TexPosRight").position, 0.4)
-				text2.set_self_modulate(lerp(text2.get_self_modulate(), Color(1, 1, 1, 0), 0.4))
-				if abs((text1.position.x - get_node("TexPosCenter").position.x)) and abs((text2.position.x - get_node("TexPosRight").position.x)) <= errorRange:
-					doSwapOpp = false
-					isText2 = false
-	#endregion
-
 func _unhandled_input(event: InputEvent) -> void:
 	if swapAllowed:
+#region Move Right
 		if event.is_action_pressed("ui_right"):
-			if isText2:
-				text1.position = get_node("TexPosRight").position
-			else:
-				text2.position = get_node("TexPosRight").position
+			swapAllowed = false
+			var tween = get_tree().create_tween()
+			tween.set_parallel()
+			
 			if activeIcon < 7:
 				activeIcon += 1
 			else:
 				activeIcon = 0
-			doSwap = true
 			
-		if event.is_action_pressed("ui_left"):
 			if isText2:
-				text1.position = get_node("TexPosLeft").position
+				text1.position = get_node("TexPosRight").position
+				text1.text = root.get_active_icons()[activeIcon].name
+				isText2 = false
+				tween.tween_property(text1, "position", get_node("TexPosCenter").position, 0.15).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
+				tween.tween_property(text1, "self_modulate", Color(1, 1, 1, 1), 0.15).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
+				tween.tween_property(text2, "position", get_node("TexPosLeft").position, 0.15).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
+				tween.tween_property(text2, "self_modulate", Color(1, 1, 1, 0), 0.15).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
+				await tween.finished
+				swapAllowed = true
 			else:
-				text2.position = get_node("TexPosLeft").position
+				text2.position = get_node("TexPosRight").position
+				text2.text = root.get_active_icons()[activeIcon].name
+				isText2 = true
+				tween.tween_property(text1, "position", get_node("TexPosLeft").position, 0.15).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+				tween.tween_property(text1, "self_modulate", Color(1, 1, 1, 0), 0.15).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+				tween.tween_property(text2, "position", get_node("TexPosCenter").position, 0.15).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+				tween.tween_property(text2, "self_modulate", Color(1, 1, 1, 1), 0.15).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+				await tween.finished
+				swapAllowed = true
+#endregion
+
+#region Move Left
+		if event.is_action_pressed("ui_left"):
+			swapAllowed = false
+			var tween = get_tree().create_tween()
+			tween.set_parallel()
+			
 			if activeIcon > 0:
 				activeIcon -= 1
 			else:
 				activeIcon = 7
-			doSwapOpp = true
-		if event.is_action_pressed("ui_accept"):
-			text1.visible = false
-			text2.visible = false
+			
 			if isText2:
 				text1.position = get_node("TexPosLeft").position
+				text1.text = root.get_active_icons()[activeIcon].name
+				isText2 = false
+				tween.tween_property(text1, "position", get_node("TexPosCenter").position, 0.15).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
+				tween.tween_property(text1, "self_modulate", Color(1, 1, 1, 1), 0.15).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
+				tween.tween_property(text2, "position", get_node("TexPosRight").position, 0.15).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
+				tween.tween_property(text2, "self_modulate", Color(1, 1, 1, 0), 0.15).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
+				await tween.finished
+				swapAllowed = true
 			else:
 				text2.position = get_node("TexPosLeft").position
+				text2.text = root.get_active_icons()[activeIcon].name
+				isText2 = true
+				tween.tween_property(text1, "position", get_node("TexPosRight").position, 0.15).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+				tween.tween_property(text1, "self_modulate", Color(1, 1, 1, 0), 0.15).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+				tween.tween_property(text2, "position", get_node("TexPosCenter").position, 0.15).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+				tween.tween_property(text2, "self_modulate", Color(1, 1, 1, 1), 0.15).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+				await tween.finished
+				swapAllowed = true
+#endregion
+
+#region Confirm Action
+		if event.is_action_pressed("ui_accept"):
+			swapAllowed = false
+			
 			if minuteOn or secondOn:
+				var tween = get_tree().create_tween()
+				tween.set_parallel()
 				activeIcon = 0
-			else:
-				swapAllowed = false
-			text1.visible = true
-			text2.visible = true
-			doSwapOpp = true
+				
+				text1.text = root.get_active_icons()[activeIcon].name
+				text2.text = root.get_active_icons()[activeIcon].name
+				
+				if isText2:
+					text1.position = get_node("TexPosLeft").position
+					isText2 = false
+					tween.tween_property(text1, "position", get_node("TexPosCenter").position, 0.15).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
+					tween.tween_property(text1, "self_modulate", Color(1, 1, 1, 1), 0.15).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
+					tween.tween_property(text2, "position", get_node("TexPosRight").position, 0.15).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
+					tween.tween_property(text2, "self_modulate", Color(1, 1, 1, 0), 0.15).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
+					await tween.finished
+				else:
+					text2.position = get_node("TexPosLeft").position
+					isText2 = true
+					tween.tween_property(text1, "position", get_node("TexPosRight").position, 0.15).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+					tween.tween_property(text1, "self_modulate", Color(1, 1, 1, 0), 0.15).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+					tween.tween_property(text2, "position", get_node("TexPosCenter").position, 0.15).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+					tween.tween_property(text2, "self_modulate", Color(1, 1, 1, 1), 0.15).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+					await tween.finished
+				swapAllowed = true
+#endregion
 
 
 func _on_conditions_minute_hand_toggled(toggled_on: bool) -> void:
@@ -108,3 +120,11 @@ func _on_conditions_minute_hand_toggled(toggled_on: bool) -> void:
 
 func _on_conditions_second_hand_toggled(toggled_on: bool) -> void:
 	secondOn = toggled_on
+
+
+func _on_second_hand_end_turn() -> void:
+	swapAllowed = false
+
+
+func _on_minute_hand_end_turn() -> void:
+	swapAllowed = false

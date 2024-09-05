@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://dskyondnaylrl"]
+[gd_scene load_steps=28 format=3 uid="uid://dskyondnaylrl"]
 
 [ext_resource type="Script" path="res://Scripts/battle_clock.gd" id="1_5s26l"]
 [ext_resource type="Texture2D" uid="uid://7b2xrpre7ifa" path="res://Clock/clock_back.png" id="1_yfyok"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://ler16mt8pxen" path="res://Clock/defend_icon.png" id="8_d3sp5"]
 [ext_resource type="Script" path="res://minute_hand.gd" id="8_eyl6r"]
 [ext_resource type="Texture2D" uid="uid://bo7hlbcy3ajep" path="res://Clock/item_icon.png" id="9_y8pya"]
+[ext_resource type="Script" path="res://second_hand.gd" id="10_2msn6"]
 [ext_resource type="Texture2D" uid="uid://dsq4b0ti8yvru" path="res://Clock/flee_icon.png" id="10_nt0xn"]
 [ext_resource type="Texture2D" uid="uid://4vhjmxdu67qr" path="res://Clock/temporal_icon.png" id="11_sx653"]
 [ext_resource type="Texture2D" uid="uid://in0fvokdvx1d" path="res://Clock/party_icon.png" id="12_egijo"]
@@ -104,6 +105,7 @@ script = ExtResource("8_eyl6r")
 visible = false
 z_index = 7
 texture = ExtResource("5_fd1i1")
+script = ExtResource("10_2msn6")
 
 [node name="Icons" type="Node2D" parent="Clock"]
 
@@ -353,6 +355,9 @@ text = "Tactics"
 position = Vector2(145, 325)
 
 [connection signal="send_to_hand" from="Clock/HourHand" to="Clock/MinuteHand" method="_on_hour_hand_send_to_hand"]
+[connection signal="end_turn" from="Clock/MinuteHand" to="Text" method="_on_minute_hand_end_turn"]
+[connection signal="send_to_hand" from="Clock/MinuteHand" to="Clock/SecondHand" method="_on_minute_hand_send_to_hand"]
+[connection signal="end_turn" from="Clock/SecondHand" to="Text" method="_on_second_hand_end_turn"]
 [connection signal="minute_hand_toggled" from="Conditions" to="Clock" method="_on_conditions_minute_hand_toggled"]
 [connection signal="minute_hand_toggled" from="Conditions" to="Clock/HourHand" method="_on_conditions_minute_hand_toggled"]
 [connection signal="minute_hand_toggled" from="Conditions" to="Text" method="_on_conditions_minute_hand_toggled"]
