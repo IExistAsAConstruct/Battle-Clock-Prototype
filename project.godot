@@ -15,9 +15,9 @@ run/main_scene="res://battle_clock.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
-[autoload]
+[display]
 
-BattleClock="*res://battle_clock.tscn"
+window/stretch/mode="viewport"
 
 [input]
 

@@ -162,6 +162,24 @@ region_rect = Rect2(40, 39, 35, 35)
 [node name="Position1" type="Marker2D" parent="Clock/IconPositions"]
 position = Vector2(0, -104)
 
+[node name="Position7_1" type="Marker2D" parent="Clock/IconPositions"]
+position = Vector2(0, -104)
+
+[node name="Position6_1" type="Marker2D" parent="Clock/IconPositions"]
+position = Vector2(0, -104)
+
+[node name="Position5_1" type="Marker2D" parent="Clock/IconPositions"]
+position = Vector2(0, -104)
+
+[node name="Position4_1" type="Marker2D" parent="Clock/IconPositions"]
+position = Vector2(0, -104)
+
+[node name="Position3_1" type="Marker2D" parent="Clock/IconPositions"]
+position = Vector2(0, -104)
+
+[node name="Position2_1" type="Marker2D" parent="Clock/IconPositions"]
+position = Vector2(0, -104)
+
 [node name="Position2" type="Marker2D" parent="Clock/IconPositions"]
 position = Vector2(70, -72)
 rotation = 0.785398
@@ -169,6 +187,26 @@ rotation = 0.785398
 [node name="Position7_2" type="Marker2D" parent="Clock/IconPositions"]
 position = Vector2(80, -65)
 rotation = 0.907571
+
+[node name="Position6_2" type="Marker2D" parent="Clock/IconPositions"]
+position = Vector2(87, -56)
+rotation = 0.994838
+
+[node name="Position5_2" type="Marker2D" parent="Clock/IconPositions"]
+position = Vector2(96, -42)
+rotation = 1.15192
+
+[node name="Position4_2" type="Marker2D" parent="Clock/IconPositions"]
+position = Vector2(104, 0)
+rotation = 1.5708
+
+[node name="Position3_2" type="Marker2D" parent="Clock/IconPositions"]
+position = Vector2(92, 48)
+rotation = 2.04204
+
+[node name="Position2_2" type="Marker2D" parent="Clock/IconPositions"]
+position = Vector2(0, 104)
+rotation = 3.14159
 
 [node name="Position3" type="Marker2D" parent="Clock/IconPositions"]
 position = Vector2(104, 0)
@@ -178,6 +216,22 @@ rotation = 1.5708
 position = Vector2(104, 18)
 rotation = 1.74533
 
+[node name="Position6_3" type="Marker2D" parent="Clock/IconPositions"]
+position = Vector2(92, 48)
+rotation = 2.04204
+
+[node name="Position5_3" type="Marker2D" parent="Clock/IconPositions"]
+position = Vector2(60, 80)
+rotation = 2.49582
+
+[node name="Position4_3" type="Marker2D" parent="Clock/IconPositions"]
+position = Vector2(0, 104)
+rotation = 3.14159
+
+[node name="Position3_3" type="Marker2D" parent="Clock/IconPositions"]
+position = Vector2(-92, 48)
+rotation = 4.24115
+
 [node name="Position4" type="Marker2D" parent="Clock/IconPositions"]
 position = Vector2(70, 72)
 rotation = 2.35619
@@ -186,33 +240,57 @@ rotation = 2.35619
 position = Vector2(50, 90)
 rotation = 2.61799
 
+[node name="Position6_4" type="Marker2D" parent="Clock/IconPositions"]
+position = Vector2(0, 104)
+rotation = 3.14159
+
+[node name="Position5_4" type="Marker2D" parent="Clock/IconPositions"]
+position = Vector2(-60, 80)
+rotation = 3.78736
+
+[node name="Position4_4" type="Marker2D" parent="Clock/IconPositions"]
+position = Vector2(-104, 0)
+rotation = 4.71239
+
 [node name="Position5" type="Marker2D" parent="Clock/IconPositions"]
 position = Vector2(0, 104)
 rotation = 3.14159
+
+[node name="Position7_5" type="Marker2D" parent="Clock/IconPositions"]
+position = Vector2(-50, 90)
+rotation = 3.66519
+
+[node name="Position6_5" type="Marker2D" parent="Clock/IconPositions"]
+position = Vector2(-92, 48)
+rotation = 4.24115
+
+[node name="Position5_5" type="Marker2D" parent="Clock/IconPositions"]
+position = Vector2(-96, -42)
+rotation = 5.13127
 
 [node name="Position6" type="Marker2D" parent="Clock/IconPositions"]
 position = Vector2(-70, 72)
 rotation = 3.92699
 
-[node name="Position7_5" type="Marker2D" parent="Clock/IconPositions"]
-position = Vector2(-50, 90)
-rotation = -2.61799
+[node name="Position7_6" type="Marker2D" parent="Clock/IconPositions"]
+position = Vector2(-104, 18)
+rotation = 4.53786
+
+[node name="Position6_6" type="Marker2D" parent="Clock/IconPositions"]
+position = Vector2(-87, -56)
+rotation = 5.28835
 
 [node name="Position7" type="Marker2D" parent="Clock/IconPositions"]
 position = Vector2(-104, 0)
 rotation = 4.71239
 
-[node name="Position7_6" type="Marker2D" parent="Clock/IconPositions"]
-position = Vector2(-104, 18)
-rotation = -1.74533
+[node name="Position7_7" type="Marker2D" parent="Clock/IconPositions"]
+position = Vector2(-80, -65)
+rotation = 5.37561
 
 [node name="Position8" type="Marker2D" parent="Clock/IconPositions"]
 position = Vector2(-70, -72)
 rotation = 5.49779
-
-[node name="Position7_7" type="Marker2D" parent="Clock/IconPositions"]
-position = Vector2(-80, -65)
-rotation = -0.907571
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -289,6 +367,7 @@ offset_top = 160.0
 offset_right = 130.0
 offset_bottom = 191.0
 focus_mode = 0
+button_pressed = true
 text = "Fight"
 
 [node name="MagicCheck" type="CheckBox" parent="Conditions"]
@@ -297,6 +376,7 @@ offset_top = 192.0
 offset_right = 130.0
 offset_bottom = 223.0
 focus_mode = 0
+button_pressed = true
 text = "Magic"
 
 [node name="DefendCheck" type="CheckBox" parent="Conditions"]
@@ -305,6 +385,7 @@ offset_top = 224.0
 offset_right = 130.0
 offset_bottom = 255.0
 focus_mode = 0
+button_pressed = true
 text = "Defend"
 
 [node name="ItemCheck" type="CheckBox" parent="Conditions"]
@@ -313,6 +394,7 @@ offset_top = 256.0
 offset_right = 130.0
 offset_bottom = 287.0
 focus_mode = 0
+button_pressed = true
 text = "Item"
 
 [node name="FleeCheck" type="CheckBox" parent="Conditions"]
@@ -322,6 +404,7 @@ offset_top = 160.0
 offset_right = 258.0
 offset_bottom = 191.0
 focus_mode = 0
+button_pressed = true
 text = "Flee"
 
 [node name="TemporalAbilityCheck" type="CheckBox" parent="Conditions"]
@@ -331,6 +414,7 @@ offset_top = 192.0
 offset_right = 258.0
 offset_bottom = 223.0
 focus_mode = 0
+button_pressed = true
 text = "Temporal Ability"
 
 [node name="PartyCheck" type="CheckBox" parent="Conditions"]
@@ -340,6 +424,7 @@ offset_top = 224.0
 offset_right = 258.0
 offset_bottom = 255.0
 focus_mode = 0
+button_pressed = true
 text = "Party"
 
 [node name="TacticsCheck" type="CheckBox" parent="Conditions"]
@@ -349,11 +434,22 @@ offset_top = 256.0
 offset_right = 258.0
 offset_bottom = 287.0
 focus_mode = 0
+button_pressed = true
 text = "Tactics"
+
+[node name="ResetButton" type="Button" parent="Conditions"]
+layout_mode = 0
+offset_left = 392.0
+offset_top = 184.0
+offset_right = 443.0
+offset_bottom = 215.0
+focus_mode = 0
+text = "Reset"
 
 [node name="CenterClockPos" type="Marker2D" parent="."]
 position = Vector2(145, 325)
 
+[connection signal="end_turn" from="Clock/HourHand" to="Text" method="_on_hour_hand_end_turn"]
 [connection signal="send_to_hand" from="Clock/HourHand" to="Clock/MinuteHand" method="_on_hour_hand_send_to_hand"]
 [connection signal="end_turn" from="Clock/MinuteHand" to="Text" method="_on_minute_hand_end_turn"]
 [connection signal="send_to_hand" from="Clock/MinuteHand" to="Clock/SecondHand" method="_on_minute_hand_send_to_hand"]
@@ -366,3 +462,45 @@ position = Vector2(145, 325)
 [connection signal="second_hand_toggled" from="Conditions" to="Text" method="_on_conditions_second_hand_toggled"]
 [connection signal="toggled" from="Conditions/MinuteHandCheck" to="Conditions" method="_on_minute_hand_check_toggled"]
 [connection signal="toggled" from="Conditions/SecondHandCheck" to="Conditions" method="_on_second_hand_check_toggled"]
+[connection signal="toggled" from="Conditions/FightCheck" to="Clock" method="_on_fight_check_toggled"]
+[connection signal="toggled" from="Conditions/FightCheck" to="Clock/HourHand" method="_on_fight_check_toggled"]
+[connection signal="toggled" from="Conditions/FightCheck" to="Clock/MinuteHand" method="_on_fight_check_toggled"]
+[connection signal="toggled" from="Conditions/FightCheck" to="Clock/SecondHand" method="_on_fight_check_toggled"]
+[connection signal="toggled" from="Conditions/FightCheck" to="Text" method="_on_fight_check_toggled"]
+[connection signal="toggled" from="Conditions/MagicCheck" to="Clock" method="_on_magic_check_toggled"]
+[connection signal="toggled" from="Conditions/MagicCheck" to="Clock/HourHand" method="_on_magic_check_toggled"]
+[connection signal="toggled" from="Conditions/MagicCheck" to="Clock/MinuteHand" method="_on_magic_check_toggled"]
+[connection signal="toggled" from="Conditions/MagicCheck" to="Clock/SecondHand" method="_on_magic_check_toggled"]
+[connection signal="toggled" from="Conditions/MagicCheck" to="Text" method="_on_magic_check_toggled"]
+[connection signal="toggled" from="Conditions/DefendCheck" to="Clock" method="_on_defend_check_toggled"]
+[connection signal="toggled" from="Conditions/DefendCheck" to="Clock/HourHand" method="_on_defend_check_toggled"]
+[connection signal="toggled" from="Conditions/DefendCheck" to="Clock/MinuteHand" method="_on_defend_check_toggled"]
+[connection signal="toggled" from="Conditions/DefendCheck" to="Clock/SecondHand" method="_on_defend_check_toggled"]
+[connection signal="toggled" from="Conditions/DefendCheck" to="Text" method="_on_defend_check_toggled"]
+[connection signal="toggled" from="Conditions/ItemCheck" to="Clock" method="_on_item_check_toggled"]
+[connection signal="toggled" from="Conditions/ItemCheck" to="Clock/HourHand" method="_on_item_check_toggled"]
+[connection signal="toggled" from="Conditions/ItemCheck" to="Clock/MinuteHand" method="_on_item_check_toggled"]
+[connection signal="toggled" from="Conditions/ItemCheck" to="Clock/SecondHand" method="_on_item_check_toggled"]
+[connection signal="toggled" from="Conditions/ItemCheck" to="Text" method="_on_item_check_toggled"]
+[connection signal="toggled" from="Conditions/FleeCheck" to="Clock" method="_on_flee_check_toggled"]
+[connection signal="toggled" from="Conditions/FleeCheck" to="Clock/HourHand" method="_on_flee_check_toggled"]
+[connection signal="toggled" from="Conditions/FleeCheck" to="Clock/MinuteHand" method="_on_flee_check_toggled"]
+[connection signal="toggled" from="Conditions/FleeCheck" to="Clock/SecondHand" method="_on_flee_check_toggled"]
+[connection signal="toggled" from="Conditions/FleeCheck" to="Text" method="_on_flee_check_toggled"]
+[connection signal="toggled" from="Conditions/TemporalAbilityCheck" to="Clock" method="_on_temporal_ability_check_toggled"]
+[connection signal="toggled" from="Conditions/TemporalAbilityCheck" to="Clock/HourHand" method="_on_temporal_ability_check_toggled"]
+[connection signal="toggled" from="Conditions/TemporalAbilityCheck" to="Clock/MinuteHand" method="_on_temporal_ability_check_toggled"]
+[connection signal="toggled" from="Conditions/TemporalAbilityCheck" to="Clock/SecondHand" method="_on_temporal_ability_check_toggled"]
+[connection signal="toggled" from="Conditions/TemporalAbilityCheck" to="Text" method="_on_temporal_ability_check_toggled"]
+[connection signal="toggled" from="Conditions/PartyCheck" to="Clock" method="_on_party_check_toggled"]
+[connection signal="toggled" from="Conditions/PartyCheck" to="Clock/HourHand" method="_on_party_check_toggled"]
+[connection signal="toggled" from="Conditions/PartyCheck" to="Clock/MinuteHand" method="_on_party_check_toggled"]
+[connection signal="toggled" from="Conditions/PartyCheck" to="Clock/SecondHand" method="_on_party_check_toggled"]
+[connection signal="toggled" from="Conditions/PartyCheck" to="Text" method="_on_party_check_toggled"]
+[connection signal="toggled" from="Conditions/TacticsCheck" to="Clock" method="_on_tactics_check_toggled"]
+[connection signal="toggled" from="Conditions/TacticsCheck" to="Clock/HourHand" method="_on_tactics_check_toggled"]
+[connection signal="toggled" from="Conditions/TacticsCheck" to="Clock/MinuteHand" method="_on_tactics_check_toggled"]
+[connection signal="toggled" from="Conditions/TacticsCheck" to="Clock/SecondHand" method="_on_tactics_check_toggled"]
+[connection signal="toggled" from="Conditions/TacticsCheck" to="Text" method="_on_tactics_check_toggled"]
+[connection signal="pressed" from="Conditions/ResetButton" to="Clock" method="_on_reset_button_pressed"]
+[connection signal="pressed" from="Conditions/ResetButton" to="Text" method="_on_reset_button_pressed"]
