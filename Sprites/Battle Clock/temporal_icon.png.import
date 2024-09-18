@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://4vhjmxdu67qr"
-path="res://.godot/imported/temporal_icon.png-8994bb2d504b9242a375a8c82029f3b0.ctex"
+path="res://.godot/imported/temporal_icon.png-cb3ce6fe39aeccf76b609ab6ad6fc195.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Clock/temporal_icon.png"
-dest_files=["res://.godot/imported/temporal_icon.png-8994bb2d504b9242a375a8c82029f3b0.ctex"]
+source_file="res://Sprites/Battle Clock/temporal_icon.png"
+dest_files=["res://.godot/imported/temporal_icon.png-cb3ce6fe39aeccf76b609ab6ad6fc195.ctex"]
 
 [params]
 

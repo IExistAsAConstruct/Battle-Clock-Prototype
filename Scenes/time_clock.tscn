@@ -1,0 +1,152 @@
+[gd_scene load_steps=9 format=3 uid="uid://becx3xudegdh1"]
+
+[ext_resource type="Script" path="res://Scripts/clock_time.gd" id="1_ox2lv"]
+[ext_resource type="Texture2D" uid="uid://6h2qluxo7rw0" path="res://Sprites/Time Clock/clock_back.png" id="1_tmric"]
+[ext_resource type="Texture2D" uid="uid://ddqnqe7xm0y7a" path="res://Sprites/Time Clock/hour_hand.png" id="2_5ht2o"]
+[ext_resource type="Texture2D" uid="uid://c5ncf71u8nmhe" path="res://Sprites/Time Clock/minute_hand.png" id="3_ql5r3"]
+[ext_resource type="Script" path="res://Scripts/time_text.gd" id="4_6xofc"]
+[ext_resource type="Script" path="res://Scripts/change_scene_time.gd" id="6_g660s"]
+
+[sub_resource type="SystemFont" id="SystemFont_u68et"]
+font_names = PackedStringArray("MV Boli")
+
+[sub_resource type="LabelSettings" id="LabelSettings_00iql"]
+font = SubResource("SystemFont_u68et")
+
+[node name="Time Clock" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Clock" type="Node2D" parent="."]
+position = Vector2(8, 8)
+script = ExtResource("1_ox2lv")
+
+[node name="ClockBack" type="Sprite2D" parent="Clock"]
+texture = ExtResource("1_tmric")
+offset = Vector2(128, 128)
+
+[node name="HourHand" type="Sprite2D" parent="Clock"]
+z_index = 1
+position = Vector2(128, 128)
+texture = ExtResource("2_5ht2o")
+region_rect = Rect2(0, 0, 256, 256)
+
+[node name="MinuteHand" type="Sprite2D" parent="Clock"]
+z_index = 2
+position = Vector2(128, 128)
+texture = ExtResource("3_ql5r3")
+
+[node name="TimeControl" type="Control" parent="."]
+anchors_preset = 0
+offset_top = 384.0
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="TimeText" type="Label" parent="TimeControl"]
+layout_mode = 0
+offset_left = 384.0
+offset_top = 88.0
+offset_right = 493.0
+offset_bottom = 115.0
+scale = Vector2(3, 3)
+text = "01:00 AM"
+label_settings = SubResource("LabelSettings_00iql")
+horizontal_alignment = 1
+script = ExtResource("4_6xofc")
+
+[node name="ActivateTime" type="CheckButton" parent="TimeControl"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 112.0
+offset_right = 119.0
+offset_bottom = 143.0
+scale = Vector2(1.5, 1.5)
+focus_mode = 0
+button_pressed = true
+text = "Activate"
+
+[node name="12HourSlider" type="HSlider" parent="TimeControl"]
+layout_mode = 0
+offset_left = 120.0
+offset_top = 169.0
+offset_right = 147.0
+offset_bottom = 185.0
+scale = Vector2(1.5, 1.5)
+max_value = 1.0
+
+[node name="12HourText" type="Label" parent="TimeControl/12HourSlider"]
+layout_mode = 0
+offset_left = -64.0
+offset_top = -2.66667
+offset_right = -7.0
+offset_bottom = 20.3333
+text = "AM/PM"
+horizontal_alignment = 1
+
+[node name="24HourText" type="Label" parent="TimeControl/12HourSlider"]
+layout_mode = 0
+offset_left = 36.6667
+offset_top = -2.66667
+offset_right = 98.6667
+offset_bottom = 20.3333
+text = "24 Hour"
+horizontal_alignment = 1
+
+[node name="SecondInterval" type="Control" parent="TimeControl"]
+anchors_preset = 0
+offset_left = 1032.0
+offset_top = 144.0
+offset_right = 1152.0
+offset_bottom = 217.0
+
+[node name="IntervalSet" type="SpinBox" parent="TimeControl/SecondInterval"]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 29.0
+offset_right = 108.0
+offset_bottom = 60.0
+min_value = 1.0
+max_value = 60.0
+value = 1.0
+alignment = 1
+
+[node name="IntervalText" type="Label" parent="TimeControl/SecondInterval"]
+layout_mode = 0
+offset_right = 120.0
+offset_bottom = 23.0
+text = "Second Interval"
+
+[node name="Change Scene" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_top = 585.0
+offset_right = 1152.0
+offset_bottom = 648.0
+script = ExtResource("6_g660s")
+
+[node name="Previous" type="Button" parent="Change Scene"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 18.0
+offset_right = 129.0
+offset_bottom = 49.0
+focus_mode = 0
+text = "Previous Clock"
+
+[node name="Next" type="Button" parent="Change Scene"]
+layout_mode = 0
+offset_left = 1049.0
+offset_top = 18.0
+offset_right = 1140.0
+offset_bottom = 49.0
+focus_mode = 0
+text = "Next Clock"
+
+[connection signal="toggled" from="TimeControl/ActivateTime" to="TimeControl/TimeText" method="_on_activate_time_toggled"]
+[connection signal="value_changed" from="TimeControl/12HourSlider" to="TimeControl/TimeText" method="_on_hour_slider_value_changed"]
+[connection signal="value_changed" from="TimeControl/SecondInterval/IntervalSet" to="TimeControl/TimeText" method="_on_interval_set_value_changed"]
+[connection signal="pressed" from="Change Scene/Previous" to="Change Scene" method="_on_previous_pressed"]

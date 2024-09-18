@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://047qgrtjtprj"
-path="res://.godot/imported/hour_hand.png-39b1f0dc5a70dd87bda644d3f5864357.ctex"
+uid="uid://6h2qluxo7rw0"
+path="res://.godot/imported/clock_back.png-bc17f821d25dfd7aed9296ed5aa5c659.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Clock/hour_hand.png"
-dest_files=["res://.godot/imported/hour_hand.png-39b1f0dc5a70dd87bda644d3f5864357.ctex"]
+source_file="res://Sprites/Time Clock/clock_back.png"
+dest_files=["res://.godot/imported/clock_back.png-bc17f821d25dfd7aed9296ed5aa5c659.ctex"]
 
 [params]
 

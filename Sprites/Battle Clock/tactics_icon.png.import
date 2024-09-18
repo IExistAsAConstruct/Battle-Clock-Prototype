@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bgikfycuv6l6i"
-path="res://.godot/imported/minute_hand.png-b87eccf33b4a39fb9e26da83a7723715.ctex"
+uid="uid://blyhlo024r3p2"
+path="res://.godot/imported/tactics_icon.png-4775868ff03b2f311c038ae6957999c6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Clock/minute_hand.png"
-dest_files=["res://.godot/imported/minute_hand.png-b87eccf33b4a39fb9e26da83a7723715.ctex"]
+source_file="res://Sprites/Battle Clock/tactics_icon.png"
+dest_files=["res://.godot/imported/tactics_icon.png-4775868ff03b2f311c038ae6957999c6.ctex"]
 
 [params]
 

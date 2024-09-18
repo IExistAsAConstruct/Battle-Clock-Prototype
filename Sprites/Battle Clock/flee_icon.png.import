@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://7b2xrpre7ifa"
-path="res://.godot/imported/clock_back.png-2f98d3aac4d74c9d378c7c7fba0a333d.ctex"
+uid="uid://dsq4b0ti8yvru"
+path="res://.godot/imported/flee_icon.png-090e406b294bef158dc621297cd3b723.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Clock/clock_back.png"
-dest_files=["res://.godot/imported/clock_back.png-2f98d3aac4d74c9d378c7c7fba0a333d.ctex"]
+source_file="res://Sprites/Battle Clock/flee_icon.png"
+dest_files=["res://.godot/imported/flee_icon.png-090e406b294bef158dc621297cd3b723.ctex"]
 
 [params]
 

@@ -18,7 +18,6 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 func _unhandled_input(event: InputEvent) -> void:
-	print(handPos)
 	if canRotate:
 		
 #region Move CW

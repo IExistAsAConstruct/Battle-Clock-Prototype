@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://blyhlo024r3p2"
-path="res://.godot/imported/tactics_icon.png-0909178fa3046a207fa28d1c8824ee45.ctex"
+uid="uid://v6qj1nhtg21t"
+path="res://.godot/imported/clock_center.png-affaa8874a3553881a8c0a1c23fefc3b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Clock/tactics_icon.png"
-dest_files=["res://.godot/imported/tactics_icon.png-0909178fa3046a207fa28d1c8824ee45.ctex"]
+source_file="res://Sprites/Battle Clock/clock_center.png"
+dest_files=["res://.godot/imported/clock_center.png-affaa8874a3553881a8c0a1c23fefc3b.ctex"]
 
 [params]
 

@@ -27,12 +27,12 @@ func change_active_icon_count(toggle_on: bool) -> void:
 	if iconsActive == 2:
 		for child in get_children():
 			if child is CheckBox:
-				if child.button_pressed:
+				if child.button_pressed and (child != $MinuteHandCheck or child != $SecondHandCheck):
 					child.disabled = true
 	else:
 		for child in get_children():
 			if child is CheckBox:
-				if child.button_pressed:
+				if child.button_pressed  and (child != $MinuteHandCheck or child != $SecondHandCheck):
 					child.disabled = false
 
 func _on_fight_check_toggled(toggled_on: bool) -> void:

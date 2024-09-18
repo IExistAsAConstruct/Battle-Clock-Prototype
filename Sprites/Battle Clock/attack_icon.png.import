@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b4nmktk2fmgdd"
-path="res://.godot/imported/magic_icon.png-21229f7af2824899b72fc3d252f7ffbc.ctex"
+uid="uid://bsl1yf3h1u4h2"
+path="res://.godot/imported/attack_icon.png-3770ca9ce4f80d2588205961ea66d831.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Clock/magic_icon.png"
-dest_files=["res://.godot/imported/magic_icon.png-21229f7af2824899b72fc3d252f7ffbc.ctex"]
+source_file="res://Sprites/Battle Clock/attack_icon.png"
+dest_files=["res://.godot/imported/attack_icon.png-3770ca9ce4f80d2588205961ea66d831.ctex"]
 
 [params]
 
