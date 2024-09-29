@@ -1,11 +1,17 @@
-[gd_scene load_steps=9 format=3 uid="uid://becx3xudegdh1"]
+[gd_scene load_steps=15 format=3 uid="uid://becx3xudegdh1"]
 
 [ext_resource type="Script" path="res://Scripts/clock_time.gd" id="1_ox2lv"]
 [ext_resource type="Texture2D" uid="uid://6h2qluxo7rw0" path="res://Sprites/Time Clock/clock_back.png" id="1_tmric"]
 [ext_resource type="Texture2D" uid="uid://ddqnqe7xm0y7a" path="res://Sprites/Time Clock/hour_hand.png" id="2_5ht2o"]
 [ext_resource type="Texture2D" uid="uid://c5ncf71u8nmhe" path="res://Sprites/Time Clock/minute_hand.png" id="3_ql5r3"]
 [ext_resource type="Script" path="res://Scripts/time_text.gd" id="4_6xofc"]
+[ext_resource type="Texture2D" uid="uid://cnargbuhd5t8i" path="res://Sprites/Time Clock/pocketwatch_back.png" id="5_0xaqy"]
+[ext_resource type="Script" path="res://Scripts/pocketwatch.gd" id="5_j1jnc"]
+[ext_resource type="Texture2D" uid="uid://ddlk6v865lriv" path="res://Sprites/Time Clock/pocketwatch_hour.png" id="6_a3xk4"]
 [ext_resource type="Script" path="res://Scripts/change_scene_time.gd" id="6_g660s"]
+[ext_resource type="Texture2D" uid="uid://bkc7dppiv7ed8" path="res://Sprites/Time Clock/pocketwatch_minute.png" id="7_r4ibh"]
+[ext_resource type="Texture2D" uid="uid://bx3njslrq0sik" path="res://Sprites/Time Clock/pocketwatch_second.png" id="8_qthnw"]
+[ext_resource type="Script" path="res://Scripts/time_control.gd" id="10_xcrsq"]
 
 [sub_resource type="SystemFont" id="SystemFont_u68et"]
 font_names = PackedStringArray("MV Boli")
@@ -21,30 +27,60 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Clock" type="Node2D" parent="."]
+[node name="Clocks" type="Node2D" parent="."]
+
+[node name="Clock1" type="Node2D" parent="Clocks"]
 position = Vector2(8, 8)
 script = ExtResource("1_ox2lv")
 
-[node name="ClockBack" type="Sprite2D" parent="Clock"]
+[node name="ClockBack" type="Sprite2D" parent="Clocks/Clock1"]
 texture = ExtResource("1_tmric")
 offset = Vector2(128, 128)
 
-[node name="HourHand" type="Sprite2D" parent="Clock"]
+[node name="HourHand" type="Sprite2D" parent="Clocks/Clock1"]
 z_index = 1
 position = Vector2(128, 128)
 texture = ExtResource("2_5ht2o")
 region_rect = Rect2(0, 0, 256, 256)
 
-[node name="MinuteHand" type="Sprite2D" parent="Clock"]
+[node name="MinuteHand" type="Sprite2D" parent="Clocks/Clock1"]
 z_index = 2
 position = Vector2(128, 128)
 texture = ExtResource("3_ql5r3")
+
+[node name="Clock2" type="Node2D" parent="Clocks"]
+position = Vector2(288, 8)
+script = ExtResource("5_j1jnc")
+
+[node name="PocketwatchBack" type="Sprite2D" parent="Clocks/Clock2"]
+position = Vector2(128, 128)
+rotation = 0.523599
+texture = ExtResource("5_0xaqy")
+
+[node name="HourHand" type="Sprite2D" parent="Clocks/Clock2"]
+position = Vector2(121, 140)
+rotation = 0.523599
+texture = ExtResource("6_a3xk4")
+offset = Vector2(0, -14.87)
+
+[node name="MinuteHand" type="Sprite2D" parent="Clocks/Clock2"]
+position = Vector2(121, 140)
+rotation = 0.523599
+texture = ExtResource("7_r4ibh")
+offset = Vector2(0, -13.525)
+
+[node name="SecondHand" type="Sprite2D" parent="Clocks/Clock2"]
+position = Vector2(97, 182)
+rotation = 0.523599
+texture = ExtResource("8_qthnw")
+offset = Vector2(-0.4, -62.21)
 
 [node name="TimeControl" type="Control" parent="."]
 anchors_preset = 0
 offset_top = 384.0
 offset_right = 1152.0
 offset_bottom = 648.0
+script = ExtResource("10_xcrsq")
 
 [node name="TimeText" type="Label" parent="TimeControl"]
 layout_mode = 0
@@ -146,7 +182,7 @@ offset_bottom = 49.0
 focus_mode = 0
 text = "Next Clock"
 
-[connection signal="toggled" from="TimeControl/ActivateTime" to="TimeControl/TimeText" method="_on_activate_time_toggled"]
+[connection signal="toggled" from="TimeControl/ActivateTime" to="TimeControl" method="_on_activate_time_toggled"]
 [connection signal="value_changed" from="TimeControl/12HourSlider" to="TimeControl/TimeText" method="_on_hour_slider_value_changed"]
-[connection signal="value_changed" from="TimeControl/SecondInterval/IntervalSet" to="TimeControl/TimeText" method="_on_interval_set_value_changed"]
+[connection signal="value_changed" from="TimeControl/SecondInterval/IntervalSet" to="TimeControl" method="_on_interval_set_value_changed"]
 [connection signal="pressed" from="Change Scene/Previous" to="Change Scene" method="_on_previous_pressed"]
