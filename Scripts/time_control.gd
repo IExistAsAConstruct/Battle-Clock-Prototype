@@ -6,7 +6,6 @@ var second:int = 0
 var trueHour:int = 0
 
 var timer:Timer
-var clockTicking: bool = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -51,5 +50,5 @@ func get_second_interval() -> int:
 
 
 func _on_interval_set_value_changed(value: float) -> void:
-	secondInterval = value
+	@warning_ignore("narrowing_conversion") secondInterval = value
 	timer.set_wait_time(secondInterval/60.0)
